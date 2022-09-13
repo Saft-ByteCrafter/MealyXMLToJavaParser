@@ -1,0 +1,23 @@
+    private final String input;
+    private final Map<State, State> delta;
+    private final Map<State, String> lambda;
+
+    Transition(String input, Map<State, State> delta, Map<State, String> lambda) {
+        this.input = input;
+        this.delta = delta;
+        this.lambda = lambda;
+    }
+
+    public String getInput() {
+        return input;
+    }
+
+    public State delta(State state) {
+        return delta.get(state);
+    }
+
+    public String lambda(State state) {
+        return lambda.get(state);
+    }
+
+}

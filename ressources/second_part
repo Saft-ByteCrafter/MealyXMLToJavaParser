@@ -1,0 +1,41 @@
+;
+
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(System.in))) {
+
+            for (; ; ) {
+                String input = in.readLine();
+
+                Transition currentTransition = getTransition(input);
+
+                if (currentTransition == null) {
+                    StringBuilder builder = new StringBuilder();
+                    builder.append("Not a valid input.\nValid inputs are: ");
+                    for(Transition transition : Transition.values()){
+                        builder.append(transition.getInput()).append(" | ");
+                    }
+                    builder.delete(builder.length() - 3, builder.length());
+                    System.out.println(builder);
+                    continue;
+                }
+
+                System.out.println(currentTransition.lambda(state));
+                state = currentTransition.delta(state);
+
+            }
+
+        } catch (IOException e) {
+            System.out.println("There was an error trying to open the input reader!\n");
+            e.printStackTrace();
+        }
+
+    }
+
+    /* returns either the transition for the given input or null if there is no transition for the given input */
+    private static Transition getTransition(String input) {
+        for (Transition transition : Transition.values()) {
+            if (input.equals(transition.getInput())) return transition;
+        }
+        return null;
+    }
+
+}

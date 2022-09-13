@@ -1,0 +1,10 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+
+    // Yes this is indeed unnecessarily complicated and I don't know why I wanted to do it this way
+    public static void main(String[] args) {
+
+        State state = State.
